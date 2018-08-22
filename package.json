@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/garnetw/SearchAndEntertainment/issues"
   },
-  "homepage": "https://github.com/garnetw/SearchAndEntertainment#readme"
+  "homepage": "https://github.com/garnetw/SearchAndEntertainment#readme",
+  "devDependencies": {
+    "express": "^4.16.3"
+  },
+  "dependencies": {
+    "npm": "^6.4.0"
+  }
 }
