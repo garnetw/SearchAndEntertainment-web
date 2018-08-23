@@ -1,0 +1,165 @@
+@charset "UTF-8";
+/* CSS Document */
+
+.card.card-block.search-form {
+	margin: 10px auto 0px;
+	background-color: rgb(248, 248, 248);
+	width: 730px;
+	text-align: center;	
+}
+
+.card-title.heading {
+	margin: 15px auto 10px;
+}
+
+.fm {
+	text-align: center;
+	margin-left: 30px;
+}
+
+.form-label {
+	text-align: left;
+	font-weight: 500;
+}
+
+.star {
+	color: red;
+	font-size: 110%;
+}
+
+.radio-label {
+	text-align: left;
+	width: 100%;
+}
+
+.card-results {
+	margin-top: 20px;
+	border: none;
+}
+
+.errorMsg {
+	margin: 0;
+	float: left;
+	color: red;
+	font-size: 12px;
+	font-weight: 500;
+	/* Need to change when show up.*/
+	line-height: 0px;
+	visibility: hidden;
+}
+
+.search-result {
+	margin: 30px auto;
+	width: 1000px;
+}
+
+/* Google 来的文字table文字垂直居中。*/
+.table > tbody > tr > th, .table > tbody > tr > td {
+    vertical-align: middle;
+	line-height: 20px;
+	font-size: 15px;
+
+}
+.btn.btn-outline-secondary.btn-sm{
+	background-color: #FFFFFF !important;
+}
+.btn.btn-outline-secondary.btn-sm:hover,
+.btn.btn-outline-secondary.btn-sm:active,
+.btn.btn-outline-secondary.btn-sm:visited {
+	background-color: #E9ECEF !important;
+	color: #6C757D !important;
+}
+
+
+.pageBtn, .pageBtn:hover, .pageBtn:active, .pageBtn:visited {
+    width: 90px !important;
+	background-color: #FFFFFF !important;
+	color: #6C757D !important;
+}
+
+/* Rating row*/
+.rtg-wrap {
+	display: -webkit-box;
+}
+.rtg-left,
+.rtg-right {
+	height: 100%;
+	overflow: hidden;
+}
+
+/* END*/
+.det-map {
+	margin: 0 auto;
+	margin-top: 5px;
+	width: 1000px;
+	margin-bottom:  30px;
+}
+
+.street-icon {
+	width: 30px;
+	height: 30px;
+	border: 1px solid rgb(228, 228, 228);
+	margin-left: 15px;
+	margin-top: 15px;
+}
+
+
+.reviewCard {
+	margin-bottom: 10px;
+}
+
+* { box-sizing: border-box; }
+/* ---- grid ---- */
+
+.grid {
+	background: #FFFFFF;
+}
+
+/* clear fix */
+.grid:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+/* ---- .grid-item ---- */
+
+.grid-item {
+	width: 24%;
+	border: 1px solid #DEE2E6;
+	margin-bottom: 5px;
+	margin-left: 5px;
+	/* --- Center pics ---- */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	float: left;
+}
+
+.grid-item img {
+	display: block;
+	padding: 0 auto;
+}
+
+
+/* AngularJS, not working...*/
+.animate-hide{
+	-webkit-transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 10s;
+	-moz-transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 10s;
+	-o-transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 10s;
+	transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 10s;
+
+	opacity: 1;
+	position: absolute;
+
+	width: 1000px;
+    margin: 30px auto;
+	left: calc((100% - 1000px)/ 2);
+
+}
+
+.animate-hide.ng-hide {
+	left: -1000px;
+	opacity: 0;
+}
+

@@ -1,25 +1,28 @@
 {
-  "name": "searchandentertainment",
-  "version": "1.0.0",
+  "name": "SearchAndEntertainment",
+  "version": "0.2.0",
   "description": "This website is built with Node.js, allowing users to search nearby places and check out details.",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/garnetw/SearchAndEntertainment.git"
   },
-  "author": "",
+  "dependencies": {
+    "@google-cloud/storage": "^1.6.0",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "npm": "^6.4.0",
+    "request": "^2.85.0",
+    "yelp-fusion": "^2.0.3"
+  },
+  "author": "Ziyan Xiong",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/garnetw/SearchAndEntertainment/issues"
   },
-  "homepage": "https://github.com/garnetw/SearchAndEntertainment#readme",
-  "devDependencies": {
-    "express": "^4.16.3"
-  },
-  "dependencies": {
-    "npm": "^6.4.0"
-  }
+  "homepage": "https://github.com/garnetw/SearchAndEntertainment#readme"
 }
