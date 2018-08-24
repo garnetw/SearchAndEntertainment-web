@@ -519,6 +519,12 @@ function generateDetsTab(details){
 
     showRews(ggReviews); // Generate reviews of a particular place.
 
+
+    $("#photoDiv").masonry({
+        itemSelector: '.grid-item',
+        columnWidth: '.grid'
+    });
+
     /* Monitor bootstrap-navTab */
     $('a[data-toggle=tab]').each(function(){
         var $this = $(this);
@@ -526,10 +532,8 @@ function generateDetsTab(details){
         $this.on('shown.bs.tab',function(){
             var target = $this.attr("href") // Obtain activated tab
             if(target == '#photos'){
-                $(".grid").imagesLoaded( function () { // Initialize the masonry after '#photos' tab is activated.
-                    $(".grid").masonry({
-                        itemSelector: '.grid-item'
-                    });
+                $("#photoDiv").imagesLoaded( function () { // Initialize the masonry after '#photos' tab is activated.
+                    $("#photoDiv").masonry('layout');
                 });
             }
         });
@@ -612,10 +616,10 @@ function getInfo(text, place){
 function getPhotos(text, place){
     text += "<div class='tab-pane fade' id='photos' role='tabpanel' aria-labelledby='photos-tab'>";
     if(place.hasOwnProperty("photos")){
-        text += "<div class='grid'>";
+        text += "<div id='photoDiv'><div class='grid'></div>";
         for(var i = 0; i < place.photos.length; i++){
             text += "<div class='grid-item'><a href='" + place.photos[i].getUrl({'maxWidth': place.photos[i].width})
-                + "' target='_blank'><img src='" + place.photos[i].getUrl({'maxWidth': 230}) + "' alt='place_img'/></a></div>";
+                + "' target='_blank'><img src='" + place.photos[i].getUrl({'maxWidth': place.photos[i].width}) + "' alt='place_img'/></a></div>";
 
         }
         text += "</div>";
@@ -1101,7 +1105,7 @@ function showFavList(){
         + "<button type='button' class='btn btn-outline-secondary btn-sm' href='javascript:void(0)' id='detsBtn' onclick='goToDets()' disabled = 'true'>"
         +"Details<span class='fa fa-chevron-right'></span></button></div>";
     /* 1st row of result table */
-    div_text += "<table class='table table-hover table-sm' id='placeTb'><thead><tr><th scope='col'>#</th>"
+    div_text += "<div class=\"table-responsive-sm\"><table class='table table-hover table-sm' id='placeTb'><thead><tr><th scope='col'>#</th>"
         + "<th scope='col'>Category</th><th scope='col'>Name</th><th scope='col'>Address</th>"
         + "<th scope='col'>Favorites</th><th scope='col'>Details</th></tr></thead>";
     div_text += "<tbody>";
@@ -1122,7 +1126,7 @@ function showFavList(){
             + "id='" + places[i].place_id + "' onclick='getDets(this.id, " + i + ")'>" +
             "<span class='fa fa-chevron-right'></span></button></td></tr>";
     }
-    div_text += "</tbody></table>";
+    div_text += "</tbody></table></div>";
 
     /* Next & Previous button */
 

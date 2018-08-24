@@ -35,9 +35,6 @@
     .det-map {
         width: 95%;
     }
-    .grid-item {
-        width: 95%;
-    }
 }
 
 
@@ -122,11 +119,12 @@
 	margin-bottom: 10px;
 }
 
-* { box-sizing: border-box; }
-/* ---- grid ---- */
+
+/* ---- Photo Grid ---- */
 
 .grid {
 	background: #FFFFFF;
+	width: 24%
 }
 
 /* clear fix */
@@ -139,43 +137,32 @@
 /* ---- .grid-item ---- */
 
 .grid-item {
-	width: 24.5%;
-	border: 1px solid #DEE2E6;
-	margin-bottom: 5px;
-	margin-left: 5px;
+	width: 24%;
+}
+.grid-item {
+	margin-bottom: 15px;
 	/* --- Center pics ---- */
-	display: flex;
-	align-items: center;
-	justify-content: center;
+	line-height: 1em;
 	float: left;
+	position: relative;
+}
+@media screen and (max-width: 768px) {
+	.grid {
+		width: 99%;
+	}
+	.grid-item {
+		width: 99%;
+	}
 }
 
 .grid-item img {
 	display: block;
-	margin: 2px auto;
-    width: 100%;
+	margin: 0 auto;
+    max-width: 97%;
 }
 
-
-/* AngularJS, not working...*/
-.animate-hide{
-	-webkit-transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 10s;
-	-moz-transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 10s;
-	-o-transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 10s;
-	transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 10s;
-
-	opacity: 1;
-	position: absolute;
-
-	width: 1000px;
-    margin: 30px auto;
-	left: calc((100% - 1000px)/ 2);
-
-}
-
-.animate-hide.ng-hide {
-	left: -1000px;
-	opacity: 0;
+.grid-item img:after {
+	clear: both;
 }
 
 /* Make btns in one line of the details page.*/
