@@ -3,9 +3,8 @@
 <head>
 <!-- meta tags -->
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
 	<link rel="shortcut icon" href="">
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -20,22 +19,24 @@
 
 <div class="card card-block search-form">
 	<span class="rounded">
-		<h4 class="card-title heading">Travel and Entertainment Search</h4>
-		<div class="container fm">
+		<h4 class="card-title text-center">Travel and Entertainment Search</h4>
+		<div class="wrapper">
+		<div class="container">
 			<form id="searchForm">
 				<!-- Keyword section -->
 				<div class="form-group row">
-					<label for="keyword" class="col-sm-3 form-control-label form-label small">Keyword
+					<label for="keyword" class="col-xs-12 col-sm-3 form-control-label small">Keyword
 						<span class="star">*</span></label>
-					<div class="col-sm-8">
+					<div class="col-xs-12 col-sm-8">
 						<input type="keyword" class="form-control form-control-sm" id="keyword">
 						<p class="errorMsg" id="err_kw">Please enter a keyword.</p>
 					</div>
+
 				</div>
 				<!-- Category section -->
 				<div class="form-group row">
-					<label for="category" class="col-sm-3 form-control-label form-label small">Category</label>
-					<div class="col-sm-6">
+					<label for="category" class="col-xs-12 col-sm-3 form-control-label small">Category</label>
+					<div class="col-xs-12 col-sm-6">
 						<select name="category" id="category" class="form-control form-control-sm">
 							<option value="default" selected>Default</option>
 							<option value="airport">Airport</option>
@@ -70,44 +71,48 @@
 					</div>
 				</div>
 				<!-- RADIUS section -->
-				<div class="form-group-sm row">
-					<label for="radius" class="col-sm-3 form-control-label form-label small">Distance(miles)</label>
-					<div class="col-sm-6">
+				<div class="form-group row">
+					<label for="radius" class="col-xs-12 col-sm-3 form-control-label small">Distance(miles)</label>
+					<div class="col-xs-12 col-sm-6">
 						<input type="radius" class="form-control form-control-sm" id="radius" placeholder="10">
 					</div>
 				</div>
+
 				<!-- LOCATION Section -->
-				<div class="form-group row">
-					<label class="col-sm-3 form-control-label form-label small">From
-						<span class="star">*</span></label>
-					<div class="col-sm-8">
-						<div class="radio">
-        					<label class="radio-label form-label small">
-          						<input type="radio" name="location" id="current" value="current" checked>
-								Current location</label>
-      					</div>
-     					<div class="radio">
-        					<label class="radio-label form-label small">
-          						<input type="radio" name="location" id="other" value="other">
-          							Other. Please specify:</label>
-          						<input type="text" class="form-control form-control-sm" id="address" disabled="true"
+				<fieldset class="form-group">
+					<div class="row">
+						<legend class="col-xs-12 col-sm-3 form-control-label small">From
+							<span class="star">*</span></legend>
+						<div class="col-xs-12 col-sm-8">
+							<div class="form-check">
+								<input class="form-check-input" type="radio" name="location" id="current" value="current" checked>
+								<label class="form-check-label small" for="current">Current location</label>
+							</div>
+							<div class="form-check">
+								<input class="form-check-input" type="radio" name="location" id="other" value="other">
+								<label class="form-check-label small" for="other">Other. Please specify:</label>
+								<input type="text" class="form-control form-control-sm" id="address" disabled="true"
 									   placeholder="Enter a location">
-          						<p class="errorMsg" id="err_addr">Please enter a location.</p>
-      					</div>
+								<p class="errorMsg" id="err_addr">Please enter a location.</p>
+							</div>
+
+						</div>
 					</div>
-				</div>
+				</fieldset>
 
 				<div class="form-group row">
-    				<button type="submit" class="btn btn-primary" disabled="true" id="searchBtn">
-    					<span class="fa fa-search"></span>&nbsp;Search
-    				</button>&nbsp;
-    				<button type="button" class="btn btn-outline-secondary" id="clearBtn">Clear</button>
+    				<div class="col-xs-12 col-sm-12">
+						<button type="submit" class="btn btn-primary" disabled="true" id="searchBtn">
+    						<span class="fa fa-search"></span>&nbsp;Search</button>&nbsp;
+    					<button type="button" class="btn btn-outline-secondary" id="clearBtn">Clear</button>
+					</div>
  				 </div>
 			</form>
 		</div>
+		</div>
 	</span>
 </div>
-<div class="card card-results" ng-app="myApp" ng-controller="MyCtrl" >
+<div class="card card-results">
 	<div class="card—block text-center">
 		<a class="btn btn-primary" href="javascript:void(0)" role="button" id="resLink">Results</a>&nbsp;
 		<a href="javascript:void(0)" class="card-link" id="favLink">Favorites</a>

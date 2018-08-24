@@ -355,7 +355,7 @@ function showNearbyPlaces(num){
         + "<button type='button' class='btn btn-outline-secondary btn-sm' href='javascript:void(0)' id='detsBtn' onclick='goToDets()' disabled = 'true'>"
         +"Details<span class='fa fa-chevron-right'></span></button></div>";
     /* 1st row of result table */
-    div_text += "<table class='table table-hover table-sm' id='placeTb'><thead><tr><th scope='col'>#</th>"
+    div_text += "<div class=\"table-responsive-sm\"><table class='table table-hover table-sm' id='placeTb'><thead><tr><th scope='col'>#</th>"
         + "<th scope='col'>Category</th><th scope='col'>Name</th><th scope='col'>Address</th>"
         + "<th scope='col'>Favorites</th><th scope='col'>Details</th></tr></thead>";
     div_text += "<tbody>";
@@ -385,7 +385,7 @@ function showNearbyPlaces(num){
             + "id='" + places[i].place_id + "' onclick='getDets(this.id, " + i + ")'>" +
             "<span class='fa fa-chevron-right'></span></button></td></tr>";
     }
-    div_text += "</tbody></table>";
+    div_text += "</tbody></table></div>";
 
     /* Next & Previous button */
     if(placeList.results[num].nextTkn != null){
@@ -479,12 +479,10 @@ function getDets(place_id){
 function generateDetsTab(details){
     var div_text = "";
     div_text = "<div class='card-block text-center' style='font-size:22px'><strong>" + details.name + "</strong></div>";
-    div_text += "<div class='card-group'>"
-        + "<div class='card-block text-left' style='width: 50%;'>"
-        + "<button type='button' class='btn btn-outline-secondary btn-sm' onclick='backToList()'>"
+    div_text += "<div class='inLineBtn'>"
+        + "<div><button type='button' class='btn btn-outline-secondary btn-sm' onclick='backToList()'>"
         + "<span class='fa fa-chevron-left'></span>&nbsp;List</button></div>"
-        + "<div class='card-block text-right' style='width: 50%;'>"
-        + "<td><button type='button' class='btn btn-outline-secondary btn-sm'"
+        + "<div><button type='button' class='btn btn-outline-secondary btn-sm' "
         + "onclick='addFav(\"" + details.icon + "\", \"" + (details.name).replace(/'/g, "&#039;") + "\", \"" + details.vicinity + "\", \"" + details.place_id +"\")'>";
 
     var found = checkExist(details.place_id);
@@ -494,17 +492,17 @@ function generateDetsTab(details){
         div_text += "<span class='far fa-star' id='favBtn_" + details.place_id + "'></span>";
     }
         + "<span class='far fa-star'></span></button>"
-    div_text += "<button class='btn btn-outline-scondary btn-sm'>"
+    div_text += "<button class='btn btn-outline-scondary btn-sm' style=\"padding:0; margin-left: 5px;\">"
         + "<a class='twitter-share-button' id='twiBtn'>"
-        + "<img src=\"http://cs-server.usc.edu:45678/hw/hw8/images/Twitter.png\" width='32' />"
+        + "<img src=\"http://cs-server.usc.edu:45678/hw/hw8/images/Twitter.png\" style=\"margin:0; padding:0; height: 32px;\"/>"
         + "</a></button></div></div>";
 
     /* Content of place details */
     div_text += "<ul class='nav nav-tabs justify-content-end' id='myTab' role='tablist'>"
-        + "<li class='nav-item'><a class='nav-link active' id='info-tab' data-toggle='tab' href='#info' role='tab' aria-controls='info' aria-selected='true'>Info</a></li>"
-        + "<li class='nav-item'><a class='nav-link' id='photos-tab' data-toggle='tab' href='#photos' role='tab' aria-controls='photos' aria-selected='true'>Photos</a></li>"
-        + "<li class='nav-item'><a class='nav-link' id='map-tab' data-toggle='tab' href='#map' role='tab' aria-controls='map' aria-selected='true'>Map</a></li>"
-        + "<li class='nav-item'><a class='nav-link' id='rew-tab' data-toggle='tab' href='#rew' role='tab' aria-controls='rew' aria-selected='true'>Reviews</a></li>"
+        + "<li class='nav-item'><a class='nav-link text-center active' id='info-tab' data-toggle='tab' href='#info' role='tab' aria-controls='info' aria-selected='true'>Info</a></li>"
+        + "<li class='nav-item'><a class='nav-link text-center' id='photos-tab' data-toggle='tab' href='#photos' role='tab' aria-controls='photos' aria-selected='true'>Photos</a></li>"
+        + "<li class='nav-item'><a class='nav-link text-center' id='map-tab' data-toggle='tab' href='#map' role='tab' aria-controls='map' aria-selected='true'>Map</a></li>"
+        + "<li class='nav-item'><a class='nav-link text-center' id='rew-tab' data-toggle='tab' href='#rew' role='tab' aria-controls='rew' aria-selected='true'>Reviews</a></li>"
         + "</ul>";
 
     div_text = getInfo(div_text, details);
@@ -530,7 +528,7 @@ function generateDetsTab(details){
             if(target == '#photos'){
                 $(".grid").imagesLoaded( function () { // Initialize the masonry after '#photos' tab is activated.
                     $(".grid").masonry({
-                       itemSelector: '.grid-item'
+                        itemSelector: '.grid-item'
                     });
                 });
             }
@@ -548,7 +546,7 @@ function getInfo(text, place){
 
     text += "<div class='tab-content' id='myTabContent' style='margin-top: 20px;'>"
         + "<div class='tab-pane fade show active' id='info' role='tabpanel' aria-labelledby='info-tab'>"
-        + "<table class='table table-striped'><tbody>";
+        + "<div class=\"table-responsive-sm\"><table class='table table-striped'><tbody>";
 
     if(json.hasOwnProperty("formatted_address")){
         text += "<tr><th scope='row'>Address</th><td>" + json.formatted_address + "</td></tr>";
@@ -602,7 +600,7 @@ function getInfo(text, place){
         }
         text += "</td></tr>";
     }
-    text += "</tbody></table></div>";
+    text += "</tbody></table></div></div>";
 
     return text;
 }
@@ -617,7 +615,7 @@ function getPhotos(text, place){
         text += "<div class='grid'>";
         for(var i = 0; i < place.photos.length; i++){
             text += "<div class='grid-item'><a href='" + place.photos[i].getUrl({'maxWidth': place.photos[i].width})
-                + "' target='_blank'><img src='" + place.photos[i].getUrl({'maxWidth': 228}) + "' alt='place_img'/></a></div>";
+                + "' target='_blank'><img src='" + place.photos[i].getUrl({'maxWidth': 230}) + "' alt='place_img'/></a></div>";
 
         }
         text += "</div>";
@@ -634,37 +632,44 @@ function getPhotos(text, place){
 * */
 function getMap(text, place){
     text += "<div class='tab-pane fade' id='map' role='tabpanel' aria-labelledby='map-tab'>";
-
-    text += "<div class='container'><div class='row'>"
-        + "<div class='col-sm-4'>From</div><div class='col-sm-4'>To</div><div class='col-sm-4'>Travel Mode</div></div>"
-        + "<div class='row'><div class='col-sm-4'><input type='address' class='form-control form-control-sm' id='map_from' value='";
+    /* --- New --- */
+    text += "<form><div class='form-row'><div class='form-group col-xs-12 col-sm-4'><label for='map_from'>From</label>"
+        + "<input type='address' class='form-control form-control-sm' id='map_from' value='";
     if(document.getElementById("address").value.length != 0){
         text += document.getElementById("address").value;
     }else{
         text += "Your location";
     }
+
+    text += "'></div>";
+    text += "<div class='form-group col-xs-12 col-sm-4'><label for='map_to'>To</label>"
+        + "<input type='address' class='form-control form-control-sm' id='map_to' value='" + place.name + ", " + place.formatted_address + "' readonly>"
+        + "</div>";
+
+    text += "<div class='form-group col-xs-12 col-sm-2'><label for='mode'>Travel Mode</label>"
+        + "<select name='mode' id='mode' class='form-control form-control-sm'>"
+        + "<option value='DRIVING' selected='selected'>Driving</option>"
+        + "<option value='BICYCLING'>Bicycling</option>"
+        + "<option value='TRANSIT'>Transit</option>"
+        + "<option value='WALKING'>Walking</option>"
+        + "</select></div>";
+
     /* Obtain the lat & lng of the destination. */
     var str = place.geometry.location + "";
     var coords = str.split(",");
     var latitude = coords[0].substring(1);
     var longitude = coords[1].substring(0, coords[1].length - 1 );
 
-    text += "'></div>"
-        + "<div class='col-sm-4'><input type='address' class='form-control form-control-sm' id='map_to' value='" + place.name + ", " + place.formatted_address + "' readonly ></div>"
-        + "<div class='col-sm-2'><select name='mode' id='mode' class='form-control form-control-sm'>"
-        + "<option value='DRIVING' selected='selected'>Driving</option>"
-        + "<option value='BICYCLING'>Bicycling</option>"
-        + "<option value='TRANSIT'>Transit</option>"
-        + "<option value='WALKING'>Walking</option>"
-        + "</select></div>"
-        + "<div class='col-sm-2'><button type='button' class='btn btn-primary btn-sm' id='routeBtn' onclick='calRoute(\"" + latitude + "\", \"" + longitude + "\")'>Get Directions</button></div>"
-        + "</div>";
+    text += "<div class='form-group col-xs-12 col-sm-2'><label for='routeBtn'>&nbsp;</label>"
+        + "<button type='button' class='btn btn-primary btn-sm' style='display: block;' id='routeBtn' onclick='calRoute(\"" + latitude + "\", \"" + longitude + "\")'>Get Directions</button></div>";
+
+    text += "</div></form>";
 
     text += "<div class='row'><a href='javascript:void(0)' onclick='toggleStreetView()'><img src='http://cs-server.usc.edu:45678/hw/hw8/images/Pegman.png' "
             + "alt='streetIcon' id='iconBtn' class='street-icon'/></a></div>";
 
-    text += "<div class='det-map' id='placeMap'></div><div class='det-map' id='routePanel'></div>";
-    text += "</div ></div>";
+    text += "<div class='row'><div class='det-map' id='placeMap'></div></div><div class='det-map' id='routePanel'></div>";
+    text += "</div>";
 
     return text;
 }
@@ -717,7 +722,7 @@ function drawMap(place){
 
     /* Set the width and height of map div. */
     document.getElementById("placeMap").style.height = "300px";
-    document.getElementById("placeMap").style.width = "980px";
+    document.getElementById("placeMap").style.width = "97%";
 }
 
 /*

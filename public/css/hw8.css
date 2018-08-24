@@ -1,39 +1,56 @@
 @charset "UTF-8";
 /* CSS Document */
-
+/* --- The outer div of search form. --- */
 .card.card-block.search-form {
-	margin: 10px auto 0px;
+	margin: 10px auto 10px;
+	padding-top: 10px;
 	background-color: rgb(248, 248, 248);
-	width: 730px;
-	text-align: center;	
+	width: 60%;
+}
+/* --- The inner div of search form, making content closer. --- */
+.wrapper {
+	width: 80%;
+	margin: auto;
+}
+/* --- For smartphone view. --- */
+@media screen and (max-width:768px) {
+	.card.card-block.search-form {
+		width: 95%;
+	}
+	.wrapper {
+		width: 100%;
+	}
+    .card-block.search-result {
+        width: 95%;
+    }
+
+    .nav.nav-tabs > li {
+        width: 20%;
+        white-space: nowrap;
+    }
+    .nav.nav-tabs > li > a {
+        padding-left: 2px;
+        font-size: 0.8em;
+    }
+    .det-map {
+        width: 95%;
+    }
+    .grid-item {
+        width: 95%;
+    }
 }
 
-.card-title.heading {
-	margin: 15px auto 10px;
-}
 
-.fm {
-	text-align: center;
-	margin-left: 30px;
-}
-
-.form-label {
-	text-align: left;
-	font-weight: 500;
-}
-
+/* --- The required field. --- */
 .star {
 	color: red;
 	font-size: 110%;
 }
 
-.radio-label {
-	text-align: left;
-	width: 100%;
-}
 
 .card-results {
-	margin-top: 20px;
+	margin: 20px 0 0 0;
+    padding: 0;
 	border: none;
 }
 
@@ -50,16 +67,15 @@
 
 .search-result {
 	margin: 30px auto;
-	width: 1000px;
+    width: 80%;
 }
 
 /* Google 来的文字table文字垂直居中。*/
 .table > tbody > tr > th, .table > tbody > tr > td {
     vertical-align: middle;
-	line-height: 20px;
-	font-size: 15px;
-
+    white-space: nowrap;
 }
+
 .btn.btn-outline-secondary.btn-sm{
 	background-color: #FFFFFF !important;
 }
@@ -89,10 +105,8 @@
 
 /* END*/
 .det-map {
-	margin: 0 auto;
-	margin-top: 5px;
-	width: 1000px;
-	margin-bottom:  30px;
+	margin: 5px auto 30px;
+    width: 100%;
 }
 
 .street-icon {
@@ -125,7 +139,7 @@
 /* ---- .grid-item ---- */
 
 .grid-item {
-	width: 24%;
+	width: 24.5%;
 	border: 1px solid #DEE2E6;
 	margin-bottom: 5px;
 	margin-left: 5px;
@@ -138,7 +152,8 @@
 
 .grid-item img {
 	display: block;
-	padding: 0 auto;
+	margin: 2px auto;
+    width: 100%;
 }
 
 
@@ -163,3 +178,8 @@
 	opacity: 0;
 }
 
+/* Make btns in one line of the details page.*/
+.inLineBtn {
+    display: flex;
+    justify-content: space-between;
+}
