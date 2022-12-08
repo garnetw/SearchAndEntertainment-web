@@ -14,7 +14,7 @@
   "dependencies": {
     "@google-cloud/storage": "^1.6.0",
     "body-parser": "^1.18.2",
-    "express": "^4.16.3",
+    "express": "^4.17.3",
     "npm": "^6.4.0",
     "request": "^2.85.0",
     "yelp-fusion": "^2.0.3"
